@@ -5,13 +5,13 @@ pipeline {
 	   steps {
                 echo 'compiling..'
 		git url: 'https://github.com/lerndevops/DevOpsClassCodes'
-		sh, script: 'mvn compile'
+		sh script: 'mvn compile'
            }
         }
         stage('codereview-pmd') {
 	   steps {
                 echo 'codereview..'
-		sh, script: 'mvn -P metrics pmd:pmd'
+		sh script: 'mvn -P metrics pmd:pmd'
            }
 	   post {
                success {
