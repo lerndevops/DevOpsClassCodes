@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: addressbook
@@ -16,7 +16,7 @@ spec:
         - containerPort: 8080
 ---
 # Node Port Service
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Service
 metadata:
   labels:
