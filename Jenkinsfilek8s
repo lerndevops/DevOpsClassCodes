@@ -1,0 +1,37 @@
+pipeline{
+    agent master
+    stages{
+
+       stage('SCM Checkout'){
+        git url: 'https://github.com/lerndevops/DevOpsClassCodes.git',branch: 'master'
+       }
+
+       stage("build artifact"){
+          sh "mvn clean package"
+
+       }
+       stage('Build Docker Image'){
+          sh 'docker build -t lerndevops/addressbook .'
+       }
+
+       stage('Push Docker Image'){
+           withCredentials([string(credentialsId: 'DOKCER_HUB_PASSWORD', variable: 'DOKCER_HUB_PASSWORD')]) {
+           sh "docker login -u lerndevops -p ${DOKCER_HUB_PASSWORD}"
+           }
+           sh 'docker push lerndevops/addressbook'
+       }
+
+       stage("Deploy To k8s Cluster"){
+          kubernetesDeploy(
+              configs: 'springBootMongo.yml',
+              kubeconfigId: 'KUBERNATES_CONFIG',
+              enableConfigSubstitution: true
+          )
+       }
+
+          /**
+       stage("Deploy To Kuberates Cluster"){
+        sh 'kubectl apply -f springBootMongo.yml'
+       } **/
+        }
+}
