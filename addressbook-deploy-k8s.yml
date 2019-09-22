@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: addressbookapp
-        image: lerndevops/addressbook
+        image: nareshmnvs/myapp:v1
         ports:
         - containerPort: 8080
 
