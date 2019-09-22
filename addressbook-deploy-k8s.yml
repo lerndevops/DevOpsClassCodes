@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name: addressbookapp
-        image: nareshmnvs/myapp:v1
+        image: lerndevops/addressbook
         ports:
-        - containerPort: 3000
+        - containerPort: 8080
 
 ---
 
@@ -32,5 +32,5 @@ spec:
     app: addressbookapp
   ports:
   - protocol: TCP
-    port: 3000
+    port: 8080
     nodePort: 30002
