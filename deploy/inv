@@ -7,12 +7,12 @@ ip1
 ip2
 
 [qa:vars]
-ansible_user=devops
-ansible_ssh_pass=devops
-ansible_sudo_pass=devops
+ansible_user=
+ansible_ssh_pass=
+ansible_sudo_pass=
 
 [prod:vars]
-ansible_user=devops
-ansible_ssh_pass=devops
-ansible_sudo_pass=devops
+ansible_user=
+ansible_ssh_pass=
+ansible_sudo_pass=
 
