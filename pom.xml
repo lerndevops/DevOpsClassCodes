@@ -55,6 +55,13 @@
 
 
     <dependencies>
+	    <!-- https://mvnrepository.com/artifact/com.checkmarx.maven/checkmarx-maven-plugin -->
+<dependency>
+    <groupId>com.checkmarx.maven</groupId>
+    <artifactId>checkmarx-maven-plugin</artifactId>
+    <version>9.00.2</version>
+</dependency>
+
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-compatibility-server</artifactId>
