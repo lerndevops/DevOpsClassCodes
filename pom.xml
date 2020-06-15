@@ -55,8 +55,12 @@
 
 
     <dependencies>
-	    <!-- https://mvnrepository.com/artifact/com.checkmarx.maven/checkmarx-maven-plugin -->
-
+	    <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+<dependency>
+    <groupId>org.sonarsource.scanner.maven</groupId>
+    <artifactId>sonar-maven-plugin</artifactId>
+    <version>3.5.0.1254</version>
+</dependency>
 
         <dependency>
             <groupId>com.vaadin</groupId>
