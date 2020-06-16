@@ -41,14 +41,19 @@ pipeline {
                }
            }		
         }
-	stage('SonarQube Analysis') {
-	steps{
-	withSonarQubeEnv('Sonarqube') {
-    sh "mvn sonar:sonar"
-}
-       
-	}
+	stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'sonar-6'
     }
+    steps {
+        withSonarQubeEnv('sonarqube') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
+    }
+}
         stage('package') {
 	   steps {
                 echo 'metric-check..'
