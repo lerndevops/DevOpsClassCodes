@@ -1,3 +1,5 @@
+currentBuild.displayName = "Maven-Project-#"+currentBuild.number
+
 pipeline {
     agent any
     stages {
