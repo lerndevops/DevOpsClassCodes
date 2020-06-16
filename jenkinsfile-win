@@ -41,6 +41,12 @@ pipeline {
                }
            }		
         }
+	stage('SonarQube Analysis') {
+        def mvnHome =  tool name: 'maven', type: 'maven'
+        withSonarQubeEnv('sonar-6') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
+        }
+    }
         stage('package') {
 	   steps {
                 echo 'metric-check..'
