@@ -49,9 +49,7 @@ pipeline {
         withSonarQubeEnv('Sonarqube') {
             bat label: '', script:'mvn sonar:sonar'
         }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
+       
     }
 }
         stage('package') {
