@@ -43,11 +43,11 @@ pipeline {
                }
            }		
         }
-	stage('Sonarqube') {
-    environment {
+   stage('Sonarqube') {
+      environment {
         scannerHome = tool 'sonar-6'
     }
-    steps {
+     steps {
         withSonarQubeEnv('Sonarqube') {
             bat label: '', script:'mvn sonar:sonar'
         }
