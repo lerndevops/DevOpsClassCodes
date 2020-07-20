@@ -35,7 +35,7 @@ public class AddressbookUI extends UI {
      * client-server communication. The default Vaadin components are in the
      * com.vaadin.ui package and there are over 500 more in
      * vaadin.com/directory.
-     */
+     */ **
     TextField filter = new TextField();
     Grid contactList = new Grid();
     Button newContact = new Button("New contact");
