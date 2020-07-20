@@ -60,5 +60,9 @@ pipeline {
 		bat label: '', script: 'mvn package'	
            }		
         }
+	stage("UploadArtifactsintoNexus")
+ {
+ sh "mvn deploy"
+ }
     }
 }
