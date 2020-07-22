@@ -65,7 +65,7 @@ pipeline {
 	    script{
 	       nexusArtifactUploader artifacts: [[artifactId: 'addressbook', classifier: '', file: 'target/*.war', type: 'war']], credentialsId: 'nexus', groupId: 'com.edurekademo.tutorial', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Maven-Project', version: '2.0'
 	   }
-	
+	 }
 	}
     }
 }
