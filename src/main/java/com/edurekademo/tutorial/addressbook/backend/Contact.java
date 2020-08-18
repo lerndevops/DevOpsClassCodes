@@ -20,7 +20,7 @@ public class Contact implements Serializable, Cloneable {
     private String firstName = "";
     private String lastName = "";
     private String phone = "";
-    private String email = "";
+    private String email = @gmail;
     private Date birthDate;
 
     public Long getId() {
