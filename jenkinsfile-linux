@@ -22,7 +22,7 @@ pipeline {
         stage('unit-test') {
 	   steps {
                 echo 'unittest..'
-	     sh script:'/opt/apache-maven-3.6.3/bin/mvn test'
+	     sh script: '/opt/apache-maven-3.6.3/bin/mvn test'
            }
 	   post {
                success {
