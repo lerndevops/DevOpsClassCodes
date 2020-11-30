@@ -23,7 +23,7 @@ pipeline {
 	   steps {
                 echo 'unittest..'
 	        sh script: '/opt/apache-maven-3.6.3/bin/mvn test'
-           }
+                 }
 	   post {
                success {
                    junit 'target/surefire-reports/*.xml'
