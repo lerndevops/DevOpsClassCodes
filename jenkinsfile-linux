@@ -11,7 +11,7 @@ pipeline {
         stage('codereview-pmd') {
 	   steps {
                 echo 'codereview..'
-		sh script: '/opt/apache-maven-3.6.3/bin/mvn -P metrics pmd:pmd'
+		sh '/opt/apache-maven-3.6.3/bin/mvn -P metrics pmd:pmd'
            }
 	   post {
                success {
