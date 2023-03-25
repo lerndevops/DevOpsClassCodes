@@ -1,0 +1,61 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('compile') {
+            steps {
+                echo 'Compiling Stage'
+                git 'https://github.com/awsdevopsclass2022/DevOpsClassCodes-aug.git'
+                sh 'mvn compile'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'Testing Stage'
+                sh 'mvn test'
+            }
+        }
+        stage('package') {
+            steps {
+                echo 'Package Stage'
+                sh 'mvn package'
+            }
+        }
+        stage('Aqua-scan') {
+            steps {
+                echo 'Security'
+            }
+        }
+        stage('Publish to NEXUS') {
+            steps {
+                echo 'Store package in Nexus'
+            }
+        } 
+        stage('Docker Build') {
+            steps {
+                echo 'Docker'
+            }
+        }
+        stage('Push Image to Dockerhub') {
+            steps {
+                echo 'Docker Registry'
+            }
+        } 
+        stage('Deploy on Dev Environment') {
+            steps {
+                echo 'Deploy on Pre-Prod Servers'
+            }
+        }
+        stage('Deploy on Pre-Prod Environment') {
+            steps {
+                echo 'Deploy on Development Servers'
+            }
+        } 
+        stage('Deploy on Prod Environment') {
+            steps {
+                echo 'Deploy on Prod Servers'
+            }
+        }
+    }
+
+}
