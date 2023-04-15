@@ -23,8 +23,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                echo 'Docker docker build stage' 
-                sh 'sudo su' 
+                echo 'Docker docker build stage'  
                 sh 'docker login -u devopsclass2022 -p Done24Money@' 
                 sh 'docker build -t devopsclass2022/addressbook'
             }
