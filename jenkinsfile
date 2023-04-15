@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Docker docker build stage'  
                 sh 'docker login -u devopsclass2022 -p Done24Money@' 
-                sh 'docker build -t devopsclass2022/addressbook'
+                sh 'docker build -t devopsclass2022/addressbook .'
             }
         }
         stage('Push Image to Dockerhub') {
