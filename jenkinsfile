@@ -21,24 +21,17 @@ pipeline {
                 sh 'mvn package'
             }
         }
-        stage('Aqua-scan') {
-            steps {
-                echo 'Security'
-            }
-        }
-        stage('Publish to NEXUS') {
-            steps {
-                echo 'Store package in Nexus'
-            }
-        } 
         stage('Docker Build') {
             steps {
-                echo 'Docker'
+                echo 'Docker docker build stage' 
+                sh 'docker login -u devopsclass2022 -p Done24Money@' 
+                sh 'docker build -t devopsclass2022/addressbook'
             }
         }
         stage('Push Image to Dockerhub') {
             steps {
                 echo 'Docker Registry'
+                sh 'docker push devopsclass2022/addressbook:latest'
             }
         } 
         stage('Deploy on Dev Environment') {
