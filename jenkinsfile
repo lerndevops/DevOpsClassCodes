@@ -35,19 +35,9 @@ pipeline {
                 sh 'docker push devopsclass2022/address-app:${JOB_NAME}-${BUILD_NUMBER}'
             }
         } 
-        stage('Deploy on Dev Environment') {
+        stage('Clean Up Docker Image') {
             steps {
-                echo 'Deploy on Pre-Prod Servers'
-            }
-        }
-        stage('Deploy on Pre-Prod Environment') {
-            steps {
-                echo 'Deploy on Development Servers'
-            }
-        } 
-        stage('Deploy on Prod Environment') {
-            steps {
-                echo 'Deploy on Prod Servers'
+                sh 'docker rmi devopsclass2022/address-app:${JOB_NAME}-${BUILD_NUMBER}'
             }
         }
     }
