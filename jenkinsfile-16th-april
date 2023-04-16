@@ -29,19 +29,19 @@ pipeline {
 
         stage('docker build') {
             steps {
-                echo 'Hello World'
+                sh 'docker build -t devopsclass2022/address-book .'
             }
         }
 
         stage('docker login') {
             steps {
-                echo 'Hello World'
+                sh 'docker login -u devopsclass2022 -p Done24Money@ '
             }
         }
 
         stage('docker push') {
             steps {
-                echo 'Hello World'
+                sh 'docker push devopsclass2022/address-book  '
             }
         }
 
