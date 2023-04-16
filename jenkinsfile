@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {   
+
+    DOCKERHUB_CREDENTIALS= credentials('docker-hub-credentials')
+
+       }
+
     stages {
         stage('compile') {
             steps {
@@ -25,16 +31,31 @@ pipeline {
             steps {
                 echo 'Docker docker build stage'  
                 sh 'docker build -t devopsclass2022/address-app:${JOB_NAME}-${BUILD_NUMBER} .' 
-                sh 'docker login -u devopsclass2022 -p  Done24Money@' 
+                //sh 'docker login -u devopsclass2022 -p  Done24Money@' 
+               // sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         
             }
         }
+
+
+        stage('Docker Login') {
+            steps {
+ 
+                //sh 'docker login -u devopsclass2022 -p  Done24Money@' 
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        
+            }
+        }
+
+
+
         stage('Push Image to Dockerhub') {
             steps {
                 echo 'Docker Registry'
                 sh 'docker push devopsclass2022/address-app:${JOB_NAME}-${BUILD_NUMBER}'
             }
         } 
+
         stage('Clean Up Docker Image') {
             steps {
                 sh 'docker rmi devopsclass2022/address-app:${JOB_NAME}-${BUILD_NUMBER}'
