@@ -29,7 +29,7 @@ pipeline {
 
         stage('docker build') {
             steps {
-                sh 'docker build -t devopsclass2022/address-book .'
+                sh 'docker build -t devopsclass2022/address-book:${BUILD_NUMBER} .'
             }
         }
 
@@ -41,7 +41,7 @@ pipeline {
 
         stage('docker push') {
             steps {
-                sh 'docker push devopsclass2022/address-book  '
+                sh 'docker push devopsclass2022/address-book:${BUILD_NUMBER} '
             }
         }
 
