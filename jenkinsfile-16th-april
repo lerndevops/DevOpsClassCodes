@@ -11,19 +11,19 @@ pipeline {
 
         stage('compile') {
             steps {
-                echo 'Hello World'
+                sh 'mvn compile'
             }
         }
 
         stage('test') {
             steps {
-                echo 'Hello World'
+                sh 'mvn test'
             }
         }
 
         stage('package') {
             steps {
-                echo 'Hello World'
+                sh 'mvn package'
             }
         }
 
