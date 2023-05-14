@@ -5,5 +5,5 @@
 #### copy a file
     - name: copy file
       copy:
-        src: target/*
+        src: ./target/*
         dest: /tmp
