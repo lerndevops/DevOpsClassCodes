@@ -1,0 +1,9 @@
+---
+- hosts: all 
+#  become: yes
+  tasks:
+#### copy a file
+    - name: copy file
+      copy:
+        src: /target/*
+        dest: /tmp
