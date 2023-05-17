@@ -7,3 +7,11 @@
       copy:
         src: /var/lib/jenkins/workspace/ansible-jenkins-int/target/addressbook.war
         dest: /tmp
+    - name: Run Docker container
+      become: true
+      docker_container:
+        name: my_container
+        image: my_image:latest
+        state: started
+        ports:
+          - "8080:80"
