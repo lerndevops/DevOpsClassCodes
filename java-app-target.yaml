@@ -11,7 +11,7 @@
       become: true
       docker_container:
         name: my_container
-        image: my_image:latest
+        image: my_image:latest-${env.BUILD_NUMBER}
         state: started
         ports:
-          - "8080:80"
+          - "${env.BUILD_NUMBER}:80"
