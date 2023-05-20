@@ -13,6 +13,10 @@
     - name: Stop and remove container if running
       command: docker rm -f addressbook
       when: container_check.stdout != ""
+    
+    - name: Remove image if exists
+      command: docker pull devopsclass2022/address-app
+      ignore_errors: true
 
     - name: Deploy new container
       command: docker run -itd -p 7000:8080 --name addressbook devopsclass2022/address-app
