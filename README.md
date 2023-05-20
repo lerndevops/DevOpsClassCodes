@@ -34,6 +34,7 @@ To get the project up and running in IDEA, do:
 
 You should now have a Jetty server running on localhost:8080. Navigate to http://localhost:8080 to play with the application
 
+
 Importing in NetBeans 8
 --------------------
 These instructions were tested on NetBeans 8.0.2. You can get it from https://www.netbeans.org
