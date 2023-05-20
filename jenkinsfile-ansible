@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-    environment {   
+    // environment {   
 
-    //DOCKERHUB_CREDENTIALS= credentials('docker-hub-credentials')
+    // //DOCKERHUB_CREDENTIALS= credentials('docker-hub-credentials')
 
-       }
+    //    }
 
     stages {
         stage('compile') {
