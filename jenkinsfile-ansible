@@ -64,7 +64,8 @@ pipeline {
 
         stage('Deployment to QA (Ansible)') {
             steps {
-                sh 'ansible-playbook ansible-docker-deploy-playbook.yaml'
+                //sh 'ansible-playbook ansible-docker-deploy-playbook.yaml'
+                sh "echo 'today@1234' | su -c 'ansible-playbook ansible-docker-deploy-playbook.yaml' devops"
             }
         }
 
