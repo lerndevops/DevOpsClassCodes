@@ -1,0 +1,74 @@
+pipeline {
+    agent any
+
+    environment {   
+
+    DOCKERHUB_CREDENTIALS= credentials('docker-hub-credentials')
+
+       }
+
+    stages {
+        stage('compile') {
+            steps {
+                echo 'Compiling Stage'
+                git 'https://github.com/awsdevopsclass2022/DevOpsClassCodes-aug.git'
+                sh 'mvn compile'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'Testing Stage'
+                sh 'mvn test'
+            }
+        }
+        stage('package') {
+            steps {
+                echo 'Package Stage'
+                sh 'mvn package'
+            }
+        }
+        stage('Docker Build') {
+            steps {
+                echo 'Docker docker build stage'  
+                sh 'docker build -t devopsclass2022/address-app .' 
+                //sh 'docker login -u devopsclass2022 -p  Done24Money@' 
+               // sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        
+            }
+        }
+
+
+        stage('Docker Login') {
+            steps {
+ 
+                //sh 'docker login -u devopsclass2022 -p  Done24Money@' 
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        
+            }
+        }
+
+
+
+        stage('Push Image to Dockerhub') {
+            steps {
+                echo 'Docker Registry'
+                sh 'docker push devopsclass2022/address-app'
+            }
+        } 
+
+        stage('Clean Up Docker Image') {
+            steps {
+                sh 'docker rmi devopsclass2022/address-app'
+            }
+        }
+
+        stage('Deployment to QA (Ansible)') {
+            steps {
+                sh 'ansible-playbook ansible-docker-deploy-playbook.yaml'
+            }
+        }
+
+
+    }
+
+}
