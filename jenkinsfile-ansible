@@ -63,9 +63,9 @@ pipeline {
 
         stage('Deployment to QA (Ansible)') { 
 
-            when {
-                expression { env.BRANCH_NAME == 'development' }
-            }
+            // when {
+            //     expression { env.BRANCH_NAME == 'orig/development' }
+            // }
             steps {
                 //sh 'ansible-playbook ansible-docker-deploy-playbook.yaml'
                 sh "echo 'today@1234' | su -c 'ansible-playbook ansible-deploy-playbook-QA.yaml' devops"
@@ -74,9 +74,9 @@ pipeline {
 
         stage('Deployment to Staging') { 
 
-            when {
-                expression { env.BRANCH_NAME == 'master' }
-            }
+            // when {
+            //     expression { env.BRANCH_NAME == 'master' }
+            // }
 
             steps {
                 //sh 'ansible-playbook ansible-docker-deploy-playbook.yaml'
