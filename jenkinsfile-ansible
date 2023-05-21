@@ -68,7 +68,7 @@ pipeline {
             }
             steps {
                 //sh 'ansible-playbook ansible-docker-deploy-playbook.yaml'
-                sh "echo 'today@1234' | su -c 'ansible-playbook ansible-docker-deploy-playbook.yaml' devops"
+                sh "echo 'today@1234' | su -c 'ansible-playbook ansible-deploy-playbook-QA.yaml' devops"
             }
         }
 
@@ -77,6 +77,7 @@ pipeline {
             when {
                 expression { env.BRANCH_NAME == 'master' }
             }
+
             steps {
                 //sh 'ansible-playbook ansible-docker-deploy-playbook.yaml'
                 sh "echo 'today@1234' | su -c 'ansible-playbook ansible-docker-deploy-playbook.yaml' devops"
