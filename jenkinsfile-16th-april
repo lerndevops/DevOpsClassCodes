@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout') {
+            steps {
+                echo 'I am doing a git clone'
+                git 'https://github.com/awsdevopsclass2022/DevOpsClassCodes-aug.git'
+            }
+        }
+
+        stage('compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+
+        stage('test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+
+        stage('docker build') {
+            steps {
+                sh 'docker build -t devopsclass2022/address-book:${JOB_NAME}-${BUILD_NUMBER} .'
+            }
+        }
+
+        stage('docker login') {
+            steps {
+                sh 'docker login -u devopsclass2022 -p Done24Money@ '
+            }
+        }
+
+        stage('docker push') {
+            steps {
+                sh 'docker push devopsclass2022/address-book:${JOB_NAME}-${BUILD_NUMBER} '
+            }
+        }
+
+
+    }
+}
