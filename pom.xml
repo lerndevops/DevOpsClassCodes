@@ -113,7 +113,7 @@
 			<version>1.7.7</version>
 		</dependency>
 
-				<!-- TESTING -->
+				<!-- UNIT TESTING -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
